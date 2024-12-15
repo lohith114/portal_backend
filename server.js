@@ -900,6 +900,28 @@ app.post("/sheet/create", async (req, res) => {
   });
 
 
+// Fetch fee status counts
+app.get('/feestatuscount', async (req, res) => {
+  try {
+      // Replace with your actual query to count fee statuses
+      const result = await db.execute({
+          sql: `SELECT
+                  SUM(CASE WHEN feeStatus = 'PAID' THEN 1 ELSE 0 END) AS paid,
+                  SUM(CASE WHEN feeStatus = 'UNPAID' THEN 1 ELSE 0 END) AS unpaid,
+                  SUM(CASE WHEN feeStatus = 'PARTIALLY PAID' THEN 1 ELSE 0 END) AS partiallyPaid
+                FROM "Student-info"`,
+          args: [],
+      });
+
+      const counts = result.rows[0];
+      res.status(200).json(counts);
+  } catch (error) {
+      console.error('Error fetching fee status counts:', error);
+      res.status(500).send({ error: 'Failed to retrieve fee status counts' });
+  }
+});
+
+
   // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
