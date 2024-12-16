@@ -14,22 +14,11 @@ const app = express();
 // Configure CORS
 app.use(
   cors({
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        "http://localhost:3000",  // for local development
-        "https://lohith114.github.io"  // for production GitHub Pages
-      ];
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000", // Configurable CORS origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     credentials: true, // Include credentials if necessary
   })
 );
-
 
 // Middleware
 app.use(bodyParser.json());
