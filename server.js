@@ -900,6 +900,7 @@ app.post("/sheet/create", async (req, res) => {
   });
 
 
+  // Endpoint
 // Fetch fee status counts
 app.get('/feestatuscount', async (req, res) => {
   try {
@@ -922,8 +923,9 @@ app.get('/feestatuscount', async (req, res) => {
 });
 
 
+
   // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} Yes I am Connected`);
+  console.log(`Server running on port ${PORT}`);
 });
