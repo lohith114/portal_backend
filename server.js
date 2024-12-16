@@ -14,11 +14,12 @@ const app = express();
 // Configure CORS
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000", // Configurable CORS origin
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-    credentials: true, // Include credentials if necessary
+    origin: process.env.CORS_ORIGIN || "https://edu-track-trail.netlify.app", 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
   })
 );
+
 
 // Middleware
 app.use(bodyParser.json());
