@@ -14,7 +14,7 @@ const app = express();
 // Configure CORS
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "https://edu-track-trail.netlify.app", 
+    origin: process.env.CORS_ORIGIN || "https://lmks.netlify.app", 
     methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true, 
   })
